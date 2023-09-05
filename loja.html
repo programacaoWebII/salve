@@ -7,7 +7,7 @@
     <title>Responsive Side Menu &ndash; Layout Examples &ndash; Pure</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
-    <script src="js/ui.js"></script>
+    
     
 </head>
 <body>
@@ -101,11 +101,51 @@
                 </div>
             </div>
 
+            <form class="pure-form pure-form-aligned">
+                <fieldset>
+                    <legend>A compact inline form</legend>
+                    <div class="pure-control-grup"><span>nada de macacos</span><input type="text"><span>pulando no colchão</span></div>
+                    <div class="pure-control-grup"><span>nada de macacos</span><input type="text"><span>pulando no colchão</span></div>  
+                    <input type="email" placeholder="Email" />
+                    <div class="pure-control-group"><input type="password" placeholder="Password" /><span><p>macacos pulando no colchão</p></span></div>
+                    <label for="default-remember">
+                        <input type="checkbox" id="default-remember" /> Remember me
+                    </label>
+                    <button type="submit" class="pure-button pure-button-primary">Sign in</button>
+                </fieldset>
+            </form>
+            <form class="pure-form pure-form-aligned">
+                <fieldset>
+                    <div class="pure-control-group">
+                        <label for="aligned-name">Username</label>
+                        <input type="text" id="aligned-name" placeholder="Username" />
+                        <span class="pure-form-message-inline">This is a required field.</span>
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="aligned-password">Password</label>
+                        <input type="password" id="aligned-password" placeholder="Password" />
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="aligned-email">Email Address</label>
+                        <input type="email" id="aligned-email" placeholder="Email Address" />
+                    </div>
+                    <div class="pure-control-group">
+                        <label for="aligned-foo">Supercalifragilistic Label</label>
+                        <input type="text" id="aligned-foo" placeholder="Enter something here..." />
+                    </div>
+                    <div class="pure-controls">
+                        <label for="aligned-cb" class="pure-checkbox">
+                            <input type="checkbox" id="aligned-cb" /> I&#x27;ve read the terms and conditions
+                        </label>
+                        <button type="submit" class="pure-button pure-button-primary">Submit</button>
+                    </div>
+                </fieldset>
+            </form>
         </div>
     </div>
 </div>
 
-
+<script src="js/ui.js"></script>
 
 </body>
 </html>

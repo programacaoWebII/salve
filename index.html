@@ -3,44 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    
-    <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+	<title>Document</title>
 </head>
 <body>
-<!--<h1>Hello, world!</h1>
-    <iframe id="map" src="https://www.google.com/maps/dir/?api=1&origin=<<coordenada1>,%20<coordenada2>>&destination=-8.112935,%20-35.032218"  width="800" height="800"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <script src="js/map.js"></script>
+	<div id = "nav">
+		<header id = "profile">
+			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+				<div class="container-fluid">
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="true" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="navbar-collapse collapse show" id="navbarCollapse" style="">
+						<ul class="navbar-nav me-auto mb-2 mb-md-0">
+						  <li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="#">Home</a>
+						  </li>
+						  <li class="nav-item">
+							<a class="nav-link" href="criar.html">criar conta</a>
+						  </li>
+						  <!--<li class="nav-item">
+							<a class="nav-link disabled">Disabled</a>
+							</li>
+						
+							
+					<ul>
+						<li><a href="login.html">Login</a></li>
+						<li><a href="criar.html">Criar Conta</a></li>
+					</ul>
+						-->
+						</ul>
+						<form class="d-flex" role="search">
+						  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+						  <button class="btn btn-outline-success" type="submit">Search</button>
+						</form>
+					  </div>
 
-    -->
-<!---
 
-<button onclick="getLocation()">Try It</button>
-
-<p id="demo"></p>
-
-<script>
-var x = document.getElementById("demo");
-
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
-
-function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude+'<br>'+'<iframe id="map" class="doc" src="https://www.google.com/maps/dir/embed/?api=1&origin='+position.coords.latitude+', '+position.coords.longitude+'&destination=-8.112935, -35.032218&embedded=true" embedded="true" width="600" height="400"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
-}
-</script>
--->
-
-
-
-
+				</div>
+			</nav>
+		</header>
+	</div>
+	<main>
+		<form>
+			<div class="mb-3">
+			  <label for="exampleInputEmail1" class="form-label">Email address</label>
+			  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+			  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+			</div>
+			<div class="mb-3">
+			  <label for="exampleInputPassword1" class="form-label">Password</label>
+			  <input type="password" class="form-control" id="exampleInputPassword1">
+			</div>
+			<div class="mb-3 form-check">
+			  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+			  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		  </form>
+	</main>
+	  
 </body>
 </html>
 

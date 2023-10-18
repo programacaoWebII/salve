@@ -1,9 +1,0 @@
-https://cloud.google.com/blog/products/maps-platform/three-ways-add-map-implementation-your-app-and-when-use-each
-
-
-https://www.google.com/maps/dir/?api=1&origin=<<coordenada1>,%20<coordenada2>>&destination=<<coordenada1>,%20<coordenada2>>
-origin vai ser onde o usuário está e destination o local de destino obviamente, quando importar um mapa utilizar este link acima
-não funfou T-T frescura com tamanho de tela por algum motivo... é o que o estava escrito no console
-
-<iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d126409.25016400083!2d-35.07432562910622!3d-8.071970962078998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m4!2s-8.0313%2C%20-34.9443!3m2!1d-8.0313!2d-34.9443!4m4!2s-8.112935%2C%20-35.032218!3m2!1d-8.112935!2d-35.032218!5e0!3m2!1sen!2sbr!4v1693760581341!5m2!1sen!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-<iframe id='map' class="doc" src="&embedded=true"></iframe>

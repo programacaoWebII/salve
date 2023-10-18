@@ -44,5 +44,5 @@ document.getElementById('toggle').addEventListener('click', function (e) {
 });
 
 window.addEventListener(WINDOW_CHANGE_EVENT, closeMenu);
-})(this, this.document);
+})(this, this.document);;
 

@@ -1,7 +1,7 @@
 version: '3.7'
 services:
-  salve_db:
-    container_name: salve-maria-db
+  demo_db:
+    container_name: demo-maria-db
     image: mariadb
     restart: always
     ports:
@@ -14,12 +14,12 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: senha1234
     networks:
-      salve_mesh:
+      demo_mesh:
         aliases:
-          - salve-db
+          - demo-db
 
-  salve_keycloak:
-    container_name: salve-keycloak
+  demo_keycloak:
+    container_name: demo-keycloak
     image: quay.io/keycloak/keycloak
     restart: always
     ports:
@@ -27,19 +27,23 @@ services:
     environment:
       PROXY_ADDRESS_FORWARDING: "true"
       DB_VENDOR: mariadb
-      DB_ADDR: salve-db
-      DB_DATABASE: salve
+      DB_ADDR: demo-db
+      DB_DATABASE: keycloak
       DB_USER: root
       DB_PASSWORD: senha1234
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
+      KC_HEALTH_ENABLED: "true"
+      KC_METRICS_ENABLED: "true"
+      KC_DB: mariadb
+      KC_DB_URL: jdbc:mariadb://demo-db:3306/salve
+      KC_DB_USERNAME: root
+      KC_DB_PASSWORD: senha1234
     command: ["start-dev"]
     depends_on:
-      - salve_db
+      - demo_db
     networks:
-      - salve_mesh
+      - demo_mesh
 
 networks:
-  salve_mesh: {}
+  demo_mesh: {}

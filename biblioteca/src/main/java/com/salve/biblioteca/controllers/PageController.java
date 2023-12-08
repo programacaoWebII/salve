@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.salve.biblioteca.entities.Categoria;
 
+
 @Controller
 public class PageController {
     @GetMapping("/mypage")
@@ -18,5 +19,14 @@ public class PageController {
         model.addAttribute("a",a);
         // Retorna o nome do template Handlebars (sem a extensão .hbs)
         return "mypage";
+    }
+    @GetMapping("/")
+    public String redireciona() {
+        return "redirect:"+myPage();
+    }
+    
+    @GetMapping("/index")
+    public String myPage() {
+        return "index";
     }
 }

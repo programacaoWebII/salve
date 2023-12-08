@@ -6,7 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Data
@@ -18,6 +18,6 @@ public class Categoria {
     private long id;
     private String nome;
     private String descricao;
-    @ManyToMany
+    @OneToMany
     private List<Subcategoria> subcategorias;
 }

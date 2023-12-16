@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.RestController.CategoriaController;
 import com.example.demo.RestController.RestFormControll;
 import com.example.demo.entities.Categoria;
 import com.example.demo.entities.Grupo;
@@ -21,10 +22,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 @Controller
 public class HomeController {
     @Autowired
+    CategoriaController controllCat;
+    @Autowired
     RestFormControll controll;
     @Autowired
     AdminRep adrp;
-    
     @GetMapping("/")
     public String home(@AuthenticationPrincipal OidcUser bearer_token,Model model){
         return "redirect:"+inicio(bearer_token,model);
@@ -36,7 +38,7 @@ public class HomeController {
         if(controll.existeUsuario(bearer_token.getName())){
             model.addAttribute("user",controll.encontraPorId(bearer_token.getName()));
             List<Grupo> livros = controll.getLivros();
-            List<Categoria> categorias = controll.getCategorias();
+            List<Categoria> categorias = controllCat.getCategorias();
             model.addAttribute("livros",livros);
             model.addAttribute("categoria", categorias);
             
@@ -52,7 +54,7 @@ public class HomeController {
             return "adicionarlivros";
         }
         if(adrp.existsById(bearer_token.getName())){
-            List<Categoria> lst = controll.getCategorias();
+            List<Categoria> lst = controllCat.getCategorias();
             model.addAttribute("categoria", lst);
             model.addAttribute("user",bearer_token);
             
@@ -67,9 +69,9 @@ public class HomeController {
     public String historico(@AuthenticationPrincipal OidcUser bearer_token,Model model){
         if(controll.existeUsuario(bearer_token.getName())){
             model.addAttribute("user", controll.encontraPorId(bearer_token.getName()));
-            model.addAttribute("categoria", controll.getCategorias());
+            model.addAttribute("categoria", controllCat.getCategorias());
             model.addAttribute("alugueis", controll.getAlugueisDoUsuario(bearer_token.getName()));
-            return "historico";
+            return "historicoadm";
         }else{
             return "vocenaoexiste";
         }

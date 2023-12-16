@@ -27,4 +27,8 @@ public class Subcategoria {
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "nome")
     @JsonIdentityReference(alwaysAsId = true)
     private Categoria categoria;
+    public Subcategoria(long id){
+        this.id = id;
+    }
+    public Subcategoria(){}
 }

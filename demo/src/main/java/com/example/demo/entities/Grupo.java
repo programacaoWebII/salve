@@ -25,10 +25,10 @@ public class Grupo {
     private String imagemLink;
     private int quantidadeDisponivel;
     private String descricao;
-    @OneToMany(mappedBy = "grupo")
+    @OneToMany(mappedBy = "grupo", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Livro> livros;
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.ALL})
     @JsonManagedReference
     private List<Subcategoria> subcategorias;
 }

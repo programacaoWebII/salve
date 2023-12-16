@@ -15,4 +15,5 @@ public interface SubcategoriaRep extends JpaRepository<Subcategoria,Long>{
     List<Subcategoria> findTudo();
     boolean existsByNome(String nome);
     boolean existsByNomeAndCategoriaId(String nome, long categoriaId);
+    Subcategoria findById(long id);
 }

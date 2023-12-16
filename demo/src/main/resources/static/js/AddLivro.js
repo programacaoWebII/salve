@@ -15,17 +15,17 @@ function carregarSubcategorias() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             // Parse da resposta JSON
-            var subcategorias = JSON.parse(xhr.responseText);
+            var subcategoriasDoServidor = JSON.parse(xhr.responseText);
 
             // Limpar o combo-box de subcategorias
             var subcategoriasSelect = document.getElementById("subcategorias");
             subcategoriasSelect.innerHTML = "<option value='0'>Selecione</option>";
 
             // Preencher o combo-box de subcategorias com os resultados obtidos
-            for (var i = 0; i < subcategorias.length; i++) {
+            for (var i = 0; i < subcategoriasDoServidor.length; i++) {
                 var option = document.createElement("option");
-                option.value = subcategorias[i].id;
-                option.text = subcategorias[i].nome;
+                option.value = subcategoriasDoServidor[i].id;
+                option.text = subcategoriasDoServidor[i].nome;
                 subcategoriasSelect.appendChild(option);
             }
         }
@@ -37,8 +37,8 @@ function carregarSubcategorias() {
 let subcategorias = [];
 class Subcat{
     constructor(value,text){
-        this.value= value;
-        this.text= text;
+        this.id= value;
+        this.nome = text;
     }
 }
 
@@ -63,14 +63,14 @@ function addMaisUmNaListaDeSub(){
         alert("já foi selecionada esta subcategoria!")
     }
     for(var i = 0; i < subcategorias.length; i++){
-        adiconeMaisSubcats(subcategorias[i].value, subcategorias[i].text);
+        adiconeMaisSubcats(subcategorias[i].id, subcategorias[i].nome);
     }
 }
 
 function deletaSpan(id){
     var oldId = id.substring(5); // Retirando o prefixo 'span_'
     for (var i=0; i < subcategorias.length; i++){
-        if(oldId == subcategorias[i].value){
+        if(oldId == subcategorias[i].id){
             subcategorias.splice(i, 1); // Removendo o elemento do array
             break;
         }
@@ -78,8 +78,6 @@ function deletaSpan(id){
     var element = document.getElementById(id);
     element.parentNode.removeChild(element); // Removendo o elemento do DOM
 }
-
-
 
 function checarSubcatExiste(){
     var subcategoria = {
@@ -96,7 +94,7 @@ function checarSubcatExiste(){
 
     // Adiciona os parâmetros à URL
     url += '?' + params;
-
+    console.log(params)
     // Faz a requisição GET
 
     fetch(url)
@@ -124,7 +122,6 @@ function checarSubcatExiste(){
 document.getElementById("checarSubcat").onclick = function(){
     checarSubcatExiste();
 }
-
 function adiconeMaisSubcats(id,texto){
     var span = document.createElement("span");
     span.id = "span_"+id;
@@ -135,8 +132,6 @@ function adiconeMaisSubcats(id,texto){
     span.appendChild(icon);
     listadecats.appendChild(span);
 }
-
-
 
 function enviaParaOServidorMaisUmaSubcat(nomedasub,categoria_id){
     var subcategoria = {
@@ -149,7 +144,7 @@ function enviaParaOServidorMaisUmaSubcat(nomedasub,categoria_id){
     var params = Object.keys(subcategoria).map(function(key) {
         return key + '=' + encodeURIComponent(subcategoria[key]);
     }).join('&');
-
+    console.log(params)
     // Adiciona os parâmetros à URL
     url += '?' + params;
 
@@ -162,11 +157,49 @@ function enviaParaOServidorMaisUmaSubcat(nomedasub,categoria_id){
             let idNovaSub = data;
             var subcatParaATela = new Subcat(idNovaSub,subcategoria.nome);
             subcategorias.push(subcatParaATela);
+            listadecats.innerHTML = "<div class=\"pure-control-group\"><label for=\"subcategoria\">subcategorias</label>";
             for(var i = 0; i < subcategorias.length; i++){
-                adiconeMaisSubcats(subcategorias[i].value, subcategorias[i].text);
+                adiconeMaisSubcats(subcategorias[i].id, subcategorias[i].nome);
             }
         })
         .catch((error) => {
             console.error('Erro:', error);
         });
+}
+
+function enviarForm(){
+    class Form {
+        constructor(nomeDoLivro,imagemDoLivro,descricaoDoLivro,quantidadeDisponivel,quantidadeEmprestavel,subcategorias){
+            this.nomeDoLivro = nomeDoLivro;
+            this.imagemDoLivro = imagemDoLivro;
+            this.descricaoDoLivro = descricaoDoLivro;
+            this.quantidadeDisponivel = quantidadeDisponivel;
+            this.quantidadeEmprestavel = quantidadeEmprestavel;
+            this.subcategorias = subcategorias;
+        }
+    }
+    class Subcategorias{
+        constructor(id){
+            this.id = id;
+        }
+    }
+    subcategoriasLocal = [];
+    for(i = 0;i<subcategorias.length;i++){
+        subcategoriasLocal.push(new Subcategorias(subcategorias[i].id));
+    }
+    var formulario  =new Form(document.getElementById("nomeDoLivro").value,
+        document.getElementById("imagemDoLivro").value,
+        document.getElementById("descricaoDoLivro").value,
+        document.getElementById("quantidadeDisponivel").value,
+        document.getElementById("quantidadeEmprestavel").value,
+        subcategoriasLocal)
+    formularioJson = JSON.stringify(formulario);
+    formularioJsonEmTexto = encodeURIComponent(formularioJson);
+    console.log(formularioJsonEmTexto);
+    url = "http://localhost:8081/formulario?string="+formularioJsonEmTexto
+
+    fetch(url).then(response => response.json())
+    .then(function(data){
+        console.log(data);
+    });
 }

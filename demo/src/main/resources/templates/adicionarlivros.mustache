@@ -20,12 +20,23 @@
 	<form class="pure-form pure-form-aligned">
         <fieldset>
         <legend>Inserir Livros no Banco de Dados!</legend>
-            <div class="pure-control-group"><label for="nome">Nome do livro</label><input type="text" name="nome" id=""></div>
-            <div class="pure-control-group"><label for="imagemLink">Imagem do livro</label><input type="text" name="imagemLink" id=""></div>
-            <div class="pure-control-group"><label for="descricao">Descrição do livro</label><input type="text" name ="descricao"></div>
-            <div class="pure-control-group"><label for="quantidadeDisponivel">Quantidade disponível</label><input type="number" name="quantidadeDisponivel"></div>
-            <div class="pure-control-group"><label for="quantidadeEmprestavel">Quantidade Emprestavel</label><input type="number" name="quantidadeEmprestavel"></div>
-            <div class="pure-control-group"><label for="categoria">Categorias</label><select id="categorias" name="categoria" onchange="carregarSubcategorias()">
+            <div class="pure-control-group">
+                <label for="nome">Nome do livro</label><input id="nomeDoLivro" type="text" name="nome" >
+            </div>
+            <div class="pure-control-group">
+                <label for="imagemLink">Imagem do livro</label><input id="imagemDoLivro" type="text" name="imagemLink">
+            </div>
+            <div class="pure-control-group">
+                <label for="descricao">Descrição do livro</label><input id="descricaoDoLivro" type="text" name ="descricao">
+            </div>
+            <div class="pure-control-group">
+                <label for="quantidadeDisponivel">Quantidade disponível</label><input id="quantidadeDisponivel" type="number" name="quantidadeDisponivel">
+            </div>
+            <div class="pure-control-group">
+                <label for="quantidadeEmprestavel">Quantidade Emprestavel</label><input id="quantidadeEmprestavel" type="number" name="quantidadeEmprestavel">
+            </div>
+            <div class="pure-control-group">
+                <label for="categoria">Categorias</label><select id="categorias" name="categoria" onchange="carregarSubcategorias()">
                 <option value="0">Selecione</option>
                 {{#categoria}}
                 <option value="{{this.id}}">{{this.nome}}</option>
@@ -45,7 +56,11 @@
                 <input id="checarSubcat" type="button" value="checar se existe" class="pure-button pure-button-primary">
             </div>
 
-            <div class="pure-controls"><label for="enviar"><label><input name="enviar" class="pure-button pure-button-primary" type="submit" value="Enviar"></label></label></div>
+            <div class="pure-controls">
+                <label for="enviar"><label>
+                <input  type="button"  onclick = "enviarForm()" value="Enviar" class="pure-button pure-button-primary">
+                </label></label>
+            </div>
 
         </fieldset>
 	</form>

@@ -2,6 +2,8 @@ package com.example.demo.entities;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,8 +25,8 @@ public class Livro {
     private String status;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "grupo_id")
+    @JsonBackReference
     private Grupo grupo;
-
     private LocalDate dataAquisicao;
     @PrePersist
     public void prePersist() {
@@ -32,5 +34,10 @@ public class Livro {
             dataAquisicao = LocalDate.now();
         }
     }
-    
+    public Livro(boolean emprestavel,String status,Grupo grupo){
+        this.emprestavel = emprestavel;
+        this.status = status;
+        this.grupo = grupo;
+    }
+    public Livro(){}
 }

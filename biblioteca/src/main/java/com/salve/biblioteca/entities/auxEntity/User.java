@@ -1,8 +1,11 @@
 package com.salve.biblioteca.entities.auxEntity;
 
+import lombok.Data;
+
+@Data
 public class User {
-    public String password;
-    public String clientId = "SALVE";
-    public String grantType = "password";
-    public String username;
+    private String password;
+    private String clientId = "SALVE";
+    private String grantType = "password";
+    private String username;
 }

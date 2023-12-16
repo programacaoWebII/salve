@@ -18,21 +18,56 @@
                     </ul>
                 </div>
             </div>
-            <form class="pure-u-1 pure-u-md-1-3 pure-form" method = "POST">
+            <form class="pure-u-1 pure-u-md-1-3 pure-form">
                 <div class="pure-menu custom-menu-3 custom-can-transform pure-menu-horizontal">
                     
                     <ul class="pure-menu-list">
-                        <li class="pure-menu-item"><input name="username" type="email" placeholder="Email" /></li>
-                        <li class="pure-menu-item"><input name="password"type="password" placeholder="Password" /></li>
+                        <li class="pure-menu-item"><input id="loginUsername" name="username" type="text" placeholder="Email" /></li>
+                        <li class="pure-menu-item"><input id = "loginPassword" name="password"type="password" placeholder="Password" /></li>
                         <li class="pure-menu-item"><label for="default-remember">
                             <input type="checkbox" id="default-remember" /> lembrar-me
                         </label></li>
-                        <li class="pure-menu-item"><input class="pure-button pure-button-primary" type="submit" value = "login">  </li>
+                        <li class="pure-menu-item">
+                       <!-- <input class="pure-button pure-button-primary" type="submit" value = "login">-->
+                        <button class="pure-button pure-button-primary" type="button" onclick="submitForm()">login</button>
+                        </li>
                     </ul>
                 </div>
             </form>
         </div>
+        <script>
+              function submitForm() {
+            var formData = {
+                username: document.getElementById('loginUsername').value,
+                password: document.getElementById('loginPassword').value
+            };
+
+            fetch('http://localhost:8081/login', {
+                method: 'POST',
+                headers: {
+                    'Accept': '*/*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                // Salva os dados da resposta no localStorage
+                localStorage.setItem('access_token', data.access_token);
+                localStorage.setItem('expires_in',data.expires_in);
+                localStorage.setItem('refresh_expires_in',data.refresh_expires_in);
+                localStorage.setItem('refresh_token', data.refresh_token);
+                window.location.href = '/mypage';
+
+                })
+                .catch((error) => {
+                console.error('Error:', error);
+                });
+
+        }
+                
         
+        </script>
         <div class="main">
             <div id="main-start" class="pure-g">
                 <div class="lateralEsquerda pure-u-1-1 pure-u-sm-12-24 pure-g">
@@ -42,30 +77,40 @@
                 </p>
                 </div>
                 <div class="lateralDireita pure-u-1-1 pure-u-sm-12-24">
-                    <form class="pure-form pure-form-aligned" action = "PUT">
+                    <form class="pure-form pure-form-aligned" action = "/create" method="POST">
                         <fieldset>
                             <legend>Criar Conta</legend>
                             <div class="pure-control-group">
                                 <label for="aligned-name">Nome de usuário</label>
-                                <input type="text" id="aligned-name" placeholder="Nome de usuário" />
+                                <input type="text" id="aligned-name" name="firstName" placeholder="Nome" />
+                                <span class="pure-form-message-inline">Campo obrigatório.</span>
+                            </div>
+                            <div class="pure-control-group">
+                                <label for="aligned-name">Nome de usuário</label>
+                                <input type="text" id="aligned-name" name="lastName" placeholder="Sobrenome" />
+                                <span class="pure-form-message-inline">Campo obrigatório.</span>
+                            </div>
+                            <div class="pure-control-group">
+                                <label for="aligned-name">Nome de usuário</label>
+                                <input type="text" id="aligned-name" name="username" placeholder="Nome de usuário" />
                                 <span class="pure-form-message-inline">Campo obrigatório.</span>
                             </div>
                             <div class="pure-control-group">
                                 <label for="aligned-password">Senha</label>
-                                <input type="password" id="aligned-password" placeholder="Senha" />
+                                <input type="password" name = "password" id="aligned-password" placeholder="Senha" />
                                 <span class="pure-form-message-inline">Campo obrigatório.</span>
                             </div>
                             <div class="pure-control-group">
                                 <label for="aligned-email">Endereço de email</label>
-                                <input type="email" id="aligned-email" placeholder="Endereço de email" />
+                                <input type="email" id="aligned-email" name="email" placeholder="Endereço de email" />
                                 <span class="pure-form-message-inline">Campo obrigatório.</span>
                             </div>
                             
                             <div class="pure-controls">
                                 <label for="aligned-cb" class="pure-checkbox">
-                                    <input type="checkbox" id="aligned-cb" /> Li os termos de condições
+                                <input type="checkbox" id="aligned-cb" /> Li os termos de condições
                                 </label>
-                                <a href="admvisaoinicial.html" class="pure-button pure-button-primary">Submit</a>
+                                <input class="pure-button pure-button-primary" type="submit" value ="Criar">
                             </div>
                         </fieldset>
                     </form>

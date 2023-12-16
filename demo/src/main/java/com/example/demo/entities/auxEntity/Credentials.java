@@ -1,4 +1,4 @@
-package com.salve.biblioteca.entities.auxEntity;
+package com.example.demo.entities.auxEntity;
 
 import lombok.Data;
 

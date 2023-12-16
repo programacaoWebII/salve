@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+#header_botoes {
+    background-color: #172554;
+    color: #fff;
+    text-align: center;
+    padding: 9px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.custom-brand {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+.custom-toggle {
+    display: none;
+}
+
+.custom-toggle s {
+    display: block;
+    background-color: #fff;
+    height: 3px;
+    width: 25px;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#header_botoes:hover .custom-toggle s {
+    background-color: #172554;
+}
+
+#header_botoes:hover .pure-menu-link {
+    background-color: #172554;
+}
+
+.pure-menu-link {
+    color: #fff !important;
+}
+
+#conectar li {
+    margin: 5px 0;
+}
+
+footer {
+    background-color: #172554;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#footer_dentro {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: background-color 0.3s ease;
+}
+
+#footer_dentro:hover {
+    background-color: #172554;
+}
+
+/* Adição de estilo para centralizar e aproximar os termos */
+#div_header h1 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+#disposicoes {
+    text-align: center;
+}
+
+#disposicoes h1, #disposicoes h2, #disposicoes h3 {
+    margin-bottom: 10px;
+}

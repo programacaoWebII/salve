@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A set of horizontal menus that switch to vertical and which hide at small window widths.">
+    <title>Salve!</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css" />
+    <link rel="stylesheet" href="css/css_test.css">
+</head>
+<body>
+    <body>
+
+        <div id="header_botoes" class="custom-wrapper pure-g" id="menu">
+            <div class="pure-u-1 pure-u-md-5-24">
+                <div class="pure-menu">
+                    <a href="#" class="pure-menu-heading custom-brand">Salve!</a>
+                    <a href="#" class="custom-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
+                </div>
+            </div>
+            <div  class="pure-u-1 pure-u-md-6-24">
+                <div class="pure-menu custom-can-transform pure-menu-horizontal">
+                    <ul id="header_botoes" class="pure-menu-list">
+                        <li  class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
+                        <li  class="pure-menu-item"><a href="#" class="pure-menu-link">Sobre</a></li>
+                        <li  class="pure-menu-item"><a href="#" class="pure-menu-link">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <form class="pure-u-1 pure-u-md-1-3 pure-form">
+                <div class="pure-menu custom-menu-3 custom-can-transform pure-menu-horizontal">
+                    <ul id="conectar" class="pure-menu-list">
+                        <li class="pure-menu-item"><input type="email" placeholder="Email" /></li>
+                        <li class="pure-menu-item"><input type="password" placeholder="Password" /></li>
+                        <li class="pure-menu-item"><label for="default-remember">
+                            <input type="checkbox" id="default-remember" /> Lembrar o usuário?
+                        </label></li>
+                        <li class="pure-menu-item"><a href="visaodoproduto.html" class="pure-button pure-button-primary">Login</a></li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+        
+        <div class="main">
+            <div id="main-start" class="pure-g">
+                <div class="lateralEsquerda pure-u-1-1 pure-u-sm-12-24 pure-g">
+                <img class = "roundimg pure-u-1-1" src="imgs/OIG.jpeg" style="max-width: 60%;" alt="">
+                <p class="splash-subhead pure-u-1-1" style="text-align: center;">
+                    Sistema Academico Literário Valoriza Educação.
+                </p>
+                </div>
+                <div id="criar_conta" class="lateralDireita pure-u-1-1 pure-u-sm-12-24">
+                    <form class="pure-form pure-form-aligned">
+                        <fieldset>
+                            <legend>Criar Conta</legend>
+                            <div class="pure-control-group">
+                                <label for="aligned-name">Nome de usuário</label>
+                                <input type="text" id="aligned-name" placeholder="Nome de usuário" />
+                                <span class="pure-form-message-inline">Campo obrigatório.</span>
+                            </div>
+                            <div class="pure-control-group">
+                                <label for="aligned-password">Senha</label>
+                                <input type="password" id="aligned-password" placeholder="Senha" />
+                                <span class="pure-form-message-inline">Campo obrigatório.</span>
+                            </div>
+                            <div class="pure-control-group">
+                                <label for="aligned-email">Endereço de e-mail</label>
+                                <input type="email" id="aligned-email" placeholder="Endereço de email" />
+                                <span class="pure-form-message-inline">Campo obrigatório.</span>
+                            </div>
+                            
+                            <div class="pure-controls">
+                                <label for="aligned-cb" class="pure-checkbox">
+                                    <a href="../documentacao/index_documentacao.html">Termos e Condições.</a>
+                                    <input type="checkbox" id="aligned-cb" /> Li e aceito os termos e condições!
+                                </label> 
+                                <a href="admvisaoinicial.html" class="pure-button pure-button-primary">Submeter</a>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+         <footer id="footer">
+            <h1>Sistema Educacional Valoriza Educação - Salve!</h1><hr>
+            <p>O Sistema Educacional Valoriza Educação - Salve, faz parte de uma série de serviços prestados pela Salve! Ltda. empresa de prestação de serviços e consultoria técnica em sistemas da informação.</p><hr>
+            <!-- <tr id="footer_dentro">
+                <th> Teste da rede social</th>
+                <th> Teste da rede social</th>
+                <th> Teste da rede social</th>
+            </tr>-->
+            <a id="footer_dentro" href="#">Inicio.</a>
+            <a id="footer_dentro" href="#">Sobre.</a>
+            <a id="footer_dentro" href="#">Blog.</a>
+            <a id="footer_dentro" href="#">Informações Legais.</a>
+        </footer>
+        <script src="js/js.js"></script>
+        </body>
+</body>
+</html>

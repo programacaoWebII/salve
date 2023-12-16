@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.custom-wrapper {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.custom-brand {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+.custom-toggle {
+    display: none;
+}
+
+.custom-toggle s {
+    display: block;
+    background-color: #fff;
+    height: 3px;
+    width: 25px;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.custom-toggle:hover s {
+    background-color: #555;
+}
+
+.pure-menu-link {
+    color: #fff !important;
+    text-decoration: none;
+}
+
+#pfp {
+    max-width: 13vw;
+    border-radius: 50%;
+}
+
+
+.barralateral {
+    background-color: #ddd;
+}
+
+.barralateral summary {
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #333;
+    border-radius: 10px;
+}
+
+.barralateral ul {
+    list-style: none;
+    padding: 0;
+}
+
+
+.principal {
+    background-color: #fff;
+    
+    border-radius: 10px;
+}
+
+.tb, .th {
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.tb button {
+    border-radius: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#footer_dentro {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: background-color 0.3s ease;
+}
+
+#footer_dentro:hover {
+    background-color: #555;
+}

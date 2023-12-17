@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.entities.Livro;
 
-public interface LivroRep extends JpaRepository<Livro,Long>{
 
+public interface LivroRep extends JpaRepository<Livro,Long>{
+    Livro findById(long id);
 }

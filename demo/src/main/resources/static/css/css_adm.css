@@ -128,3 +128,7 @@ footer {
 #footer_dentro:hover {
     background-color: #555;
 }
+.pure-menu-heading {
+    text-transform: capitalize;
+    color: white;
+}

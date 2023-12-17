@@ -65,18 +65,27 @@ public class HomeController {
         }
         
     }
-     @GetMapping("historico")
+    @GetMapping("historico")
     public String historico(@AuthenticationPrincipal OidcUser bearer_token,Model model){
         if(controll.existeUsuario(bearer_token.getName())){
             model.addAttribute("user", controll.encontraPorId(bearer_token.getName()));
             model.addAttribute("categoria", controllCat.getCategorias());
             model.addAttribute("alugueis", controll.getAlugueisDoUsuario(bearer_token.getName()));
-            return "historicoadm";
+            return "historico";
         }else{
             return "vocenaoexiste";
         }
     }
-
+    @GetMapping("admbaixa")
+    public String admBaixa(@AuthenticationPrincipal OidcUser bearer_token,Model model){
+        if(adrp.existsById(bearer_token.getName())){
+            model.addAttribute("user", controll.encontraPorId(bearer_token.getName()));
+            model.addAttribute("categoria", controllCat.getCategorias());
+            return "admbaixa";
+        }else{
+            return "redirect:"+inicio(bearer_token, model);
+        }
+    }
     @GetMapping("tuto")
     public String getMethodName(@AuthenticationPrincipal OidcUser bearer_token,Model model) {
         model.addAttribute("repo",bearer_token);

@@ -136,7 +136,6 @@ body{
 }
 .barralateral{
     border-right: white solid 2.5px;
-    
 }
 .principal{
     display: flex;
@@ -168,10 +167,6 @@ body{
     background-color: #DCDCDC;
     border-radius: 4px;
     gap: 0.55em;
-    width: 100%!important;
-}
-.corrigeLixo{
-	height:4.5vh!important;
 }
 .xm-bt{
     font-size: 70%;

@@ -23,8 +23,8 @@
             <div class="pure-u-1 pure-u-md-1-3">
                 <div class="pure-menu custom-can-transform pure-menu-horizontal">
                     <ul class="pure-menu-list">
-                        <li class="pure-menu-item"><a href="index.html" class="pure-menu-link">Sair</a></li>
-                        <li class="pure-menu-item"><a href="admvisaoinicial.html" class="pure-menu-link">Voltar</a></li>
+                        <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Sair</a></li>
+                        <li class="pure-menu-item"><a href="/admvisaoinicial" class="pure-menu-link">Voltar</a></li>
                         <li class="pure-menu-item"><a href="#" class="pure-menu-link">Contact</a></li>
                     </ul>
                 </div>
@@ -33,42 +33,33 @@
                 <div class="pure-menu custom-menu-3 custom-can-transform pure-menu-horizontal">
                     
                     <ul class="pure-menu-list">
-                        <li class="pure-menu-item"><img id = "pfp" src="imgs/profilepic.png" alt=""></li>
+                        <li class="pure-menu-item">{{user.fullname}}</li>
+                        <li class="pure-menu-item"><img id = "pfp" src="{{user.imagemLink}}" alt=""></li>
                     </ul>
                 </div>
             </div>
         </div>
         
         <div class="main pure-g">
-                <div class="pure-u-1-1 pure-u-md-4-24 barralateral pure-g"><details>
+                <div id="meuId" class="pure-u-1-1 pure-u-md-4-24 barralateral pure-g">
+                <details>
                     <summary class="pure-button pure-u-1-1 sm-bt">Filtros</summary>
-                    <details>
-                        <summary class="pure-button pure-u-1-1 sm-bt">materias</summary>
-                        <ul>
-                            <li> <input type="checkbox" name="" id=""> Programação</li>
-                            <li> <input type="checkbox" name="" id=""> Matemática</li>
-                            <li> <input type="checkbox" name="" id=""> Português</li>
-                            <li> <input type="checkbox" name="" id=""> Inglês</li>
-                        </ul>
-                    </details>
-                    <details>
-                        <summary class="pure-button pure-u-1-1 sm-bt">assunto</summary>
-                        <ul>
-                            <li> <input type="checkbox" name="" id=""> assunto 1</li>
-                            <li> <input type="checkbox" name="" id=""> assunto 2</li>
-                            <li> <input type="checkbox" name="" id=""> assunto 3</li>
-                            <li> <input type="checkbox" name="" id=""> assunto 4</li>
-                        </ul>
-                    </details>
+                      {{#categoria}}
+                            <details class="pure-u-1-1 ">
+                            <summary class="pure-button pure-u-1-1 sm-bt" >{{this.nome}}</summary>
+                            <ul>
+                                {{#this.subcategorias}}
+                                    <li><label onclick="pesquisaViaSubcategorias()"> <input type="checkbox" name="{{this.id}}" id=""> {{this.nome}} </label></input></li>
+                                {{/this.subcategorias}}
+                            </ul>
+                            </details>
+                        {{/categoria}}
                     <details class="pure-form">
                         <summary class="pure-button pure-u-1-1 sm-bt">id/aluno</summary>
-                        <form action="" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
-                            <input class="pure-u-23-24 xm-bt" type="number" placeholder="id do livro" />
-                        <input class="pure-u-23-24 xm-bt" type="number" placeholder="id do aluno" />
-                        <input class="pure-u-23-24 xm-bt" type="text" placeholder="nome do aluno" />
-                        <button class="pure-button pure-button-primary" >Buscar</button>
-                        </form>
-                        
+                        <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
+                            <input id="buscaIdLivro" class="pure-u-13-24 xm-bt" type="number" placeholder="id do livro" /><button id="buttonBuscaidlivro" class="pure-u-10-24 pure-button pure-button-primary" >Buscar</button>
+                            <input id="buscaCpf" class="pure-u-13-24 xm-bt" type="number" placeholder="cpf" /><button id="buttonBuscacpf" class="pure-u-10-24 pure-button pure-button-primary" >Buscar</button>
+                        </div>
                     </details>
                 </details>
 
@@ -77,43 +68,19 @@
                         <div class ="pure-u-1-1 pure-g pure-form" style="display: flex;"><div class="pure-u-12-24 pure-g insereAluguel"><label class="pure-u-1-2" for="idLivro">id do livro alugado:</label><input id="livroID"class="pure-u-1-2" name="idLivro" type="number"></div><div class="pure-u-12-24 pure-g insereAluguel"><label class="pure-u-1-2" for="cpf">cpf do locatario:</label><input id="cpf" class="pure-u-1-2" name="cpf" type="number"></div></div>
                         <h1 class ="pure-u-1-1 th">Administração de livros</h1>
                         <div class="pure-u-4-24 th">ID</div>
-                        <div class="pure-u-4-24 th">Livro</div>
+                        <div class="pure-u-3-24 th">Livro</div>
                         <div class="pure-u-4-24 th">Data de emprestimo</div>
                         <div class="pure-u-4-24 th">Data de devolução</div>
-                        <div class="pure-u-4-24 th">status/id do fiador</div>
+                        <div class="pure-u-5-24 th">status/id do fiador</div>
                         <div class="pure-u-4-24 th">ações</div>
                         <div id="tableBody" class="pure-g pure-u-1-1 principal">
-                        <div class="pure-u-4-24 tb">1</div>
-                        <div class="pure-u-4-24 tb">Livro 1</div>
-                        <div class="pure-u-4-24 tb">1/1/0001</div>
-                        <div class="pure-u-4-24 tb">1/1/0001</div>
-                        <div class="pure-u-4-24 tb">OK</div>
-                        <div class="pure-u-4-24 tb"></div>
-                        <div class="pure-u-4-24 tb">2</div>
-                        <div class="pure-u-4-24 tb">Livro 2</div>
-                        <div class="pure-u-4-24 tb">2/2/0002</div>
-                        <div class="pure-u-4-24 tb">2/2/0002</div>
-                        <div class="pure-u-4-24 tb">OK</div>
-                        <div class="pure-u-4-24 tb"></div>
-                        <div class="pure-u-4-24 tb">3</div>
-                        <div class="pure-u-4-24 tb">Livro 3</div>
-                        <div class="pure-u-4-24 tb">3/3/0003</div>
-                        <div class="pure-u-4-24 tb">3/3/0003</div>
-                        <div class="pure-u-4-24 tb">OK</div>
-                        <div class="pure-u-4-24 tb"></div>
-                        <div class="pure-u-4-24 tb">12345</div>
-                        <div class="pure-u-4-24 tb">Livro 4</div>
-                        <div class="pure-u-4-24 tb">14/10/2023</div>
-                        <div class="pure-u-4-24 tb">21/10/2023</div>
-                        <div class="pure-u-4-24 tb">Emprestado / 868584</div>
-                        <div class="pure-u-4-24 tb displayflex"><button class="pure-u-12-24 pure-button xm-bt">perdido</button> <button class="pure-u-12-24 pure-button xm-bt">devolvido</button></div>
                         </div>
                         
                     
                 </div>
         </div>
         <script src="js/js.js"></script>
-        <script src="js/InsereNovoAluguel.js"></script>
+        <script src="js/InsereNovoAluguel.js" charset="UTF-8"></script>
         <footer id="footer">
             <h1>Sistema Educacional Valoriza Educação - Salve!</h1><hr>
             <p>O Sistema Educacional Valoriza Educação - Salve, faz parte de uma série de serviços prestados pela Salve! Ltda. empresa de prestação de serviços e consultoria técnica em sistemas da informação.</p><hr>

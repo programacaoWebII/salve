@@ -1,6 +1,8 @@
 package com.example.demo.RestController;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -82,7 +84,7 @@ public class RestFormControll {
     public boolean registraAluguel(@PathVariable String cpf,@PathVariable long idlivro){
         Aluguel aluguel = new Aluguel();
         aluguel.setLivro(lrep.findById(idlivro));
-        if(aluguel.getLivro().getStatus().equals("alugado")||aluguel.getLivro().getStatus().equals("perdido")){
+        if(aluguel.getLivro().getStatus().equals("alugado")||aluguel.getLivro().getStatus().equals("perdido")||aluguel.getLivro().getStatus().contains("renovado")){
             return false;
         }
         aluguel.setUsuarioId(nurep.findByCpf(cpf));
@@ -121,6 +123,43 @@ public class RestFormControll {
             return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
+        }
+    }
+    @GetMapping("/livroRenovacao/{idAluguel}")
+    public boolean renovaLivro(@PathVariable long idAluguel) {
+        Aluguel aluguel = arp.findById(idAluguel);
+        Livro livro = lrep.findById(aluguel.getLivro().getId());
+        LocalDate data1 = aluguel.getDataAluguel().toLocalDate();
+        LocalDate data2 = LocalDate.now();
+        long distancia = ChronoUnit.DAYS.between(data1, data2);
+        if(livro.getStatus().contains("alugado") && distancia>=6 && distancia<8){
+            livro.setStatus("renovado 1");
+            lrep.save(livro);
+            return true;
+        }else if(livro.getStatus().contains("renovado")){
+            String[] statusDividido = livro.getStatus().split(" ");
+            int quant = Integer.parseInt(statusDividido[1]);
+            if(quant >2){
+                return false;
+            }else{
+                if(distancia>=9 && distancia<10 && quant==1){
+                    quant+=1;
+                    statusDividido[1] =""+quant;
+                    livro.setStatus(statusDividido[0]+" "+statusDividido[1]);
+                    lrep.save(livro);
+                    return true;
+                }else if(distancia>=12 && distancia<13 && quant ==2){
+                    quant+=1;
+                    statusDividido[1] =""+quant;
+                    livro.setStatus(statusDividido[0]+" "+statusDividido[1]);
+                    lrep.save(livro);
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }else{
             return false;
         }
     }

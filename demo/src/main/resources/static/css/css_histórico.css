@@ -65,14 +65,13 @@ body {
 
 .barralateral {
     background-color: #ddd;
-    /*padding: 10px;*/
+
 }
 
 .barralateral summary {
     background-color: #001F3F;
     color: #fff;
     cursor: pointer;
-    /*padding: 10px;*/
     border: 1px solid #001F3F;
     border-radius: 10px;
 }

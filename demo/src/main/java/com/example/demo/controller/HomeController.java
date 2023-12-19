@@ -41,6 +41,7 @@ public class HomeController {
             List<Categoria> categorias = controllCat.getCategorias();
             model.addAttribute("livros",livros);
             model.addAttribute("categoria", categorias);
+            model.addAttribute("adm", adrp.existsById(bearer_token.getName()));
             
             return "visaodoproduto";
         }

@@ -38,6 +38,7 @@ public class SubcategoiaController {
     }
     @GetMapping("/subcategoriaExiste")
     public boolean existeEstaSub(@RequestParam long categoria_id,@RequestParam String nome) {
+        
         return srp.existsByNomeAndCategoriaId(nome,categoria_id);
     }
     @GetMapping("/subcategoriasPosting")

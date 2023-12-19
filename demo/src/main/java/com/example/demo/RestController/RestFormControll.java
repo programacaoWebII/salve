@@ -66,7 +66,7 @@ public class RestFormControll {
     }
     @GetMapping("/encontraAlugueisPorSubcatDeLivros")
     public List<Aluguel> encontraViaSubcategoria(@RequestParam String subcategorias){
-        return arp.findAllByLivroGrupoIn(getGruposViaSubcategorias(subcategorias));
+        return arp.findAlugueisComGrupos(getGruposViaSubcategorias(subcategorias));
     }
     @GetMapping("/aluguel")
     public List<Aluguel> getAlugueis() {
@@ -198,7 +198,7 @@ public class RestFormControll {
     public List<Aluguel> encontraLivrosQueOUsuarioAlugouViaSubcategoias(@PathVariable String cpf,@RequestParam String subcategorias){
         ArrayList<String> cpfs = new ArrayList<>();
         cpfs.add(cpf);
-        return arp.findByUsuarioIdCpfInAndLivroGrupoIn(cpfs, getGruposViaSubcategorias(subcategorias));
+        return arp.findComCPFAndGrupos(cpfs, getGruposViaSubcategorias(subcategorias));
     }
     public NormalUser terminaCadastro(NormalUser user) {
         return nurep.save(user);

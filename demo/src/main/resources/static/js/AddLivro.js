@@ -101,17 +101,18 @@ function checarSubcatExiste(){
         .then(response => response.json())
         .then(function(data){
             console.log(data);
-            if(data=true){
+            if(data===false){
                 var resposta = confirm("Você quer Criar esta subcategoria que pertence a categoria "+ subcategoria.categoriaNome + "?");
                 if (resposta) {
                     console.log('Usuário clicou em OK');
-                    // Adicione um input com valor "texto" ao elemento com id "body"
                     enviaParaOServidorMaisUmaSubcat(subcategoria.nome,subcategoria.categoria_id);
 
                 } else {
                     console.log('Usuário clicou em Cancelar');
                 }
 
+            }else{
+                alert("Esta subcategoria já existe.");
             }
         })
         .catch((error) => {
@@ -187,6 +188,10 @@ function enviarForm(){
     for(i = 0;i<subcategorias.length;i++){
         subcategoriasLocal.push(new Subcategorias(subcategorias[i].id));
     }
+    if(document.getElementById("descricaoDoLivro").value.length>=240){
+        alert("Descrição muito longa!");
+        return ;
+    }
     var formulario  =new Form(document.getElementById("nomeDoLivro").value,
         document.getElementById("imagemDoLivro").value,
         document.getElementById("descricaoDoLivro").value,
@@ -200,6 +205,20 @@ function enviarForm(){
 
     fetch(url).then(response => response.json())
     .then(function(data){
+        if(data){
+            
+            document.getElementById("nomeDoLivro").value="";
+            document.getElementById("imagemDoLivro").value="";
+            document.getElementById("descricaoDoLivro").value="";
+            document.getElementById("quantidadeDisponivel").value ="";
+            document.getElementById("quantidadeEmprestavel").value ="";
+            subcategorias = [];
+            listadecats.innerHTML ="";
+            subcategoriasLocal=[];
+            alert("Livro Inserido com sucesso");
+        }else{
+            alert("Não foi possivel Salvar o Livro...")
+        }
         console.log(data);
     });
 }

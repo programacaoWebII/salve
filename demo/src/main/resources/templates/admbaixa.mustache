@@ -24,7 +24,7 @@
                 <div class="pure-menu custom-can-transform pure-menu-horizontal">
                     <ul class="pure-menu-list">
                         <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Sair</a></li>
-                        <li class="pure-menu-item"><a href="/admvisaoinicial" class="pure-menu-link">Voltar</a></li>
+                        <li class="pure-menu-item"><a href="/visaodoproduto" class="pure-menu-link">Voltar</a></li>
                         <li class="pure-menu-item"><a href="#" class="pure-menu-link">Contact</a></li>
                     </ul>
                 </div>
@@ -49,7 +49,7 @@
                             <summary class="pure-button pure-u-1-1 sm-bt" >{{this.nome}}</summary>
                             <ul>
                                 {{#this.subcategorias}}
-                                    <li><label onclick="pesquisaViaSubcategorias()"> <input type="checkbox" name="{{this.id}}" id=""> {{this.nome}} </label></input></li>
+                                    <li><label onchange="pesquisaViaSubcategorias()"> <input type="checkbox" name="{{this.id}}" id=""> {{this.nome}} </label></input></li>
                                 {{/this.subcategorias}}
                             </ul>
                             </details>

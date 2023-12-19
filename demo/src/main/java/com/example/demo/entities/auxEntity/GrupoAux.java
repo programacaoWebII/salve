@@ -29,7 +29,7 @@ public class GrupoAux {
         ArrayList<Long> arrayList = new ArrayList<>();
         for (Object iteravel : subcategorias) {
             JSONObject inter = (JSONObject) iteravel;
-            arrayList.add(Long.parseLong(inter.getString("id")));
+            arrayList.add(Long.parseLong(""+inter.getInt("id")));
         }
         this.setSubcategorias(arrayList);
     }

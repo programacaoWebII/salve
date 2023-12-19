@@ -57,7 +57,7 @@ public class HomeController {
         if(adrp.existsById(bearer_token.getName())){
             List<Categoria> lst = controllCat.getCategorias();
             model.addAttribute("categoria", lst);
-            model.addAttribute("user",bearer_token);
+            model.addAttribute("user",controll.encontraPorId(bearer_token.getName()));
             
             return "adicionarlivros";
         }else{

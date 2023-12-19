@@ -1,18 +1,51 @@
-<!DOCTYPE html>
-<html lang="pt">
+<!doctype html>
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salve! Termos de Uso</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+  <link rel="stylesheet" href="cadastro_css.css">
 </head>
 <body>
-    <h1>Você não existe irmão ...</h1>
-    <h1>Ainda ...</h1>
-    <p>Termine seu cadastro preenchendo as informações abaixo!</p>
-    <form action ="/vocenaoexisteok" method="GET">
-        <label for="cpf">seu cpf:<input type="number" name="cpf" id="cpf"></label><br>
-        <label for="imagem">link de imagem para seu perfil:<input type="text" name ="imagemLink"></label><br>
-        <input type="submit" value="Concluir Cadastro">
+  <div id="div_header">
+    <header>
+      <h1>Salve!</h1>
+      <nav id="botao">
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+      </nav>
+
+    </header>
+    
+  </div>
+  
+ 
+
+  <div id="disposicoes" text-aling="left">
+
+  <h1 id="lembrete">Complete o seu cadastro:</h1>
+  <h2 id="lembrete">Entre com o seu CPF e o link para sua imagem de perfil para completar a sua experiência!</h2><hr>
+
+    <form id="cadastro" action ="/vocenaoexisteok" method="GET" class="pure-form pure-form-stacked">
+        <fieldset>
+            <legend>Termine o seu cadastro.</legend>
+            <label for="cpf">Seu CPF:<input type="number" name="cpf" id="cpf"></label>
+            
+            <span class="pure-form-message">This is a required field.</span>
+            <label for="stacked-password">Link para a imagem</label>
+            <input type="text" name ="imagemLink" placeholder="Link para a imagem.">
+            <button type="submit" class="pure-button pure-button-primary">Submeter</button>
+        </fieldset>
     </form>
+
+
+  </div>
+  <script type="text/javascript" src="main.js"></script>
+  {{>footer}}
 </body>
 </html>

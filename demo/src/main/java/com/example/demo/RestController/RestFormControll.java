@@ -214,6 +214,8 @@ public class RestFormControll {
             GrupoAux grupoAux = GrupoAux.ConstroiUmGrupoViaJSONobject(jSONObject);
             Grupo gp = grupoAux.getGrupo();
             gp.setSubcategorias(srp.findAllById(grupoAux.getSubcategorias()));
+            System.out.println(gp.getDescricao());
+            
             grp.save(gp);
         } catch (Exception e) {
             System.out.println(e.getMessage());

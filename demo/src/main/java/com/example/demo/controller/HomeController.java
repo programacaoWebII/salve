@@ -62,7 +62,7 @@ public class HomeController {
             return "adicionarlivros";
         }else{
             model.addAttribute("user", bearer_token);
-            return "redirect:tuto";
+            return "redirect:visaodoproduto";
         }
         
     }

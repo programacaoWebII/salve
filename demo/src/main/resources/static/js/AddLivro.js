@@ -205,7 +205,7 @@ function enviarForm(){
 
     fetch(url).then(response => response.json())
     .then(function(data){
-        if(data){
+        if(data===true){
             
             document.getElementById("nomeDoLivro").value="";
             document.getElementById("imagemDoLivro").value="";

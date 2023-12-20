@@ -209,7 +209,7 @@ public class RestFormControll {
     @GetMapping("/formulario")
     public boolean salvaTudo(@RequestParam String string) {
         try {
-            System.out.println(string);
+            
             JSONObject jSONObject = new JSONObject(string);
             GrupoAux grupoAux = GrupoAux.ConstroiUmGrupoViaJSONobject(jSONObject);
             Grupo gp = grupoAux.getGrupo();

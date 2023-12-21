@@ -133,3 +133,9 @@ footer {
 details{
     margin-bottom: 0px!important;
 }
+.pure-menu-item a:hover {
+    background-color: darkblue;
+}
+summary:hover{
+    background-color: darkblue!important;
+}

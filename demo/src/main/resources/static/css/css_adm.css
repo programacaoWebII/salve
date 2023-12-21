@@ -145,9 +145,9 @@ footer {
 }
 
 #pfp {
-    max-width: 8em;
+    width: 8em;
     border-radius: 50%;
-    max-height: 8em;
+    height: 8em;
 }
 
 
@@ -166,8 +166,9 @@ footer {
   color: #fff !important;
   text-decoration: none;
 }
-a:hover {
-    color: green; /* Cor que você deseja ao passar o mouse */
+.pure-menu-item a:hover {
+    background-color: darkblue;
 }
-
-
+summary:hover{
+    background-color: darkblue!important;
+}
